@@ -1,0 +1,12 @@
+{
+  "name": "agricultura_precision",
+  "version": "1.0.0",
+  "description": "En este repositorio se encuentra un sistema de monitoreo de cultivos conectado a un modelo de inteligencia artificial para recibir respuestas y recomendaciones precisas con base a datos recolectados desde un dispositivo hardware\r Internet de las cosas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
