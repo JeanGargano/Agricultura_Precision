@@ -30,9 +30,14 @@ class AgriculturaPrecisionService:
         except Exception as e:
             raise Exception(f"Error al procesar el prompt en Gemini: {str(e)}")
         
-    def calcular_cantidad_agua(self, temepretaura:int, humedadR: float, humedad:float):
+
+    #Metodo para calcular la cantidad de agua en litros    
+    def calcular_cantidad_agua(self, data:models.SensorData):
         try:
-            res = 
-            return "La cantidad de agua que necesita el cultivos es:", res,"litros"
+            temperatura = data.temperatura
+            humedadR = data.humedad_R
+            humedad = data.humedad
+            res = ((temperatura/10) + ((100-humedadR)/100) + ((70-humedad)/100)) * 0.75
+            return "La cantidad de agua que necesita el cultivos es: ", res,"litros"
         except Exception as e:
             raise Exception(f"Error al calcular la cantidad de agua en litros: {str(e)}")
