@@ -2,6 +2,11 @@ from fastapi import FastAPI
 from app.api.routers import router
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from dotenv import load_dotenv 
+import os
+
+
+load_dotenv() 
 
 app = FastAPI()
 

@@ -1,43 +1,38 @@
-from app.adapters.User_Adapter import MongoUserAdapter
+from app.adapters.Mongo_Adapter import MongoAdapter
 import json
-from app.adapters.Micro_Adapter import MongoMicroAdapter
 from app.core import models
+import google.generativeai as genai
+import os
 
-class Agricultura_Precision_Service:
+from app.adapters.Gemini_Adapter import GeminiAdapter
 
-    #Constructor de agricultura de precision
-    def __init__(self, user_Adapter: MongoUserAdapter, micro_Adapter: MongoMicroAdapter):
-        self.user_Adapter = user_Adapter
-        self.micro_Adapter = micro_Adapter
 
-#------------------------------------------------Metodos para el micro--------------------------
+class AgriculturaPrecisionService:
+    def __init__(self, mongo_adapter: MongoAdapter, gemini_adapter: GeminiAdapter):
+        self.mongo_adapter = mongo_adapter
+        self.gemini_adapter = gemini_adapter
 
-    def save_sensor_data(self):
+
+    #Metodo para colectar los datos de los sensores
+    def get_sensor_data(self):
         try:
-            # Recolecta datos del sensor
-            sensor_data_json = self.micro_Adapter.collect_sensor_data()
-            sensor_data = json.loads(sensor_data_json)
-            
-            # Guarda los datos en la base de datos
-            self.micro_Adapter.save_sensor_data(
-                humedad=sensor_data['humedad'],
-                humedad_relativa=sensor_data['humedad_relativa'],
-                temperatura=sensor_data['temperatura']
-            )
-
-            return sensor_data 
+            sensor_data_json = self.mongo_adapter.collect_sensor_data()
+            return sensor_data_json
         except Exception as e:
             raise Exception(f"Error al procesar los datos del sensor: {str(e)}")
         
-#-----------------------------------Metodos para usuario----------------------------------
 
-    def registrar_usuario(self, user: models.User):
+    #Metodo para obtener recomendaciones
+    def process_prompt(self, prompt: str):
         try:
-            saved_user = self.user_Adapter.save_user(user)
-            if saved_user is None:
-                    return "Los campos no pueden ser nulos."
-            if saved_user:
-                return "El usuario se ha guardado exitosamente."
-            return "Error al guardar el usuario."
+            response = self.gemini_adapter.process_prompt(prompt)
+            return response
         except Exception as e:
-            raise Exception(f"Error al registrar usuario: {str(e)}")
+            raise Exception(f"Error al procesar el prompt en Gemini: {str(e)}")
+        
+    def calcular_cantidad_agua(self, temepretaura:int, humedadR: float, humedad:float):
+        try:
+            res = 
+            return "La cantidad de agua que necesita el cultivos es:", res,"litros"
+        except Exception as e:
+            raise Exception(f"Error al calcular la cantidad de agua en litros: {str(e)}")

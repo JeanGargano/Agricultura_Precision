@@ -1,11 +1,14 @@
 # src/adapters/MysqlMicroAdapter.py
 from core.models import SensorData
 from app.core.ports import MicroInterface
-import subprocess  # Para ejecutar el módulo de C++
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
+from http.client import HTTPException
+from typing import Optional
+import subprocess
+import requests
 
-class MongoMicroAdapter(MicroInterface):
+class MongoAdapter(MicroInterface):
     def __init__(self):
         try:
             self.client = MongoClient("mongodb+srv://jean:root@bd2.evaabnw.mongodb.net/")
@@ -21,7 +24,7 @@ class MongoMicroAdapter(MicroInterface):
             self.client.close()
 
 
-    #Metodos
+#------------------------------------------Metodos para el microcontrolador------------------------------
     def save_sensor_data(self, humedad: float, humedad_relativa: float, temperatura: float):
         try:
             nuevo_dato = SensorData(
@@ -38,14 +41,13 @@ class MongoMicroAdapter(MicroInterface):
             self.session.close()
 
     def collect_sensor_data(self):
-        # Suponiendo que tu módulo de C++ es un ejecutable que devuelve los datos en formato JSON
         try:
-            result = subprocess.run(["path/to/your_cpp_module"], capture_output=True, text=True)
-            if result.returncode != 0:
-                raise Exception(f"Error en el módulo de C++: {result.stderr}")
-            data = result.stdout
+            response = requests.get("http://192.168.39.129/data")
+            response.raise_for_status()  # Lanza un error si el estado no es 200
+            data = response.json()
             return data
-        except Exception as e:
+        except requests.RequestException as e:
             raise Exception(f"Error al recolectar datos del sensor: {str(e)}")
+            
         
 
