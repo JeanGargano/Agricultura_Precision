@@ -1,3 +1,2 @@
 # Agricultura_Precision
-En este repositorio se encuentra un sistema de monitoreo de cultivos conectado a un modelo de inteligencia artificial para recibir respuestas y recomendaciones precisas con base a datos recolectados desde un dispositivo hardware
-Internet de las cosas
+This repository contains a crop monitoring system that integrates a Large Language Model (LLM), in this case Gemini, along with an ESP32 microprocessor. The ESP32 collects data such as soil moisture, relative air humidity, and temperature, which are sent to an API developed in Python using a hexagonal architecture and the FastAPI framework. Based on the collected data, the system calculates the required amount of water in liters for the soil. Finally, a request is sent to Gemini’s API to obtain recommendations on optimal crop care.
