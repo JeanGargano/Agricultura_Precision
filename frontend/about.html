@@ -3,38 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Mission & Story</title>
+    <title>We & Our Mission</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #ffffff6c;
             color: #333;
         }
-        
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 40px 0;
         }
-        
         .section {
             margin-bottom: 60px;
         }
-
         .section h2 {
             font-size: 2em;
             color: #2f3b56;
+            text-align: center;
         }
-        .section h2.left {
-            text-align: left;
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
         }
-        .section h2.right {
-            text-align: right;
-        }
-        
         .content {
             display: flex;
             justify-content: space-between;
@@ -50,19 +47,16 @@
             font-size: 1.1em;
             color: #555;
         }
-        
         .content .image {
             flex: 1;
             text-align: center;
         }
-
         .content .image img {
             width: 100%;
             max-width: 300px;
             border-radius: 20px;
             object-fit: cover;
         }
-        
         .image-signature {
             font-style: italic;
             margin-top: 10px;
@@ -102,11 +96,9 @@
         <li> <a class="active" href="about.html">About us</a></li>
         <li> <a href="#" onclick="goBack()">Volver</a></li>
     </ul>
-
     <div class="container">
-        <!-- Our Mission Section -->
         <section class="section">
-            <h2 class="left">Our Mission</h2>
+            <h2>Nosotros</h2>
             <div class="content">
                 <div class="text">
                     <p>There's this notion that to grow a business, you have to be ruthless. But we know there's a better way to grow. One where what's good for the bottom line is also good for customers. We believe businesses can grow with a conscience, and succeed with a soul—and that they can do it with inbound. That's why we've created an ecosystem uniting software, education, and community to help businesses grow better every day.</p>
@@ -117,21 +109,41 @@
                 </div>
             </div>
         </section>
-
-        <!-- Our Story Section -->
         <section class="section">
-            <h2 class="right">Our Story</h2>
+            <h2>Introduccion</h2>
             <div class="content">
                 <div class="image">
                     <img src="story-image.jpg" alt="Our Story Image">
                 </div>
                 <div class="text">
-                    <p>As fellow graduate students at MIT in 2004, Brian and Dharmesh noticed a shift in the way people shop and buy. Consumers were no longer tolerating interruptive bids for their attention—in fact, they’d gotten really, really good at ignoring them. Brian and Dharmesh knew there had to be a better way to attract, engage, and delight customers, so they started to build the inbound movement.</p>
+                    <p>La creciente preocupación por la escasez de agua y la necesidad de optimizar los recursos en la agricultura ha llevado a explorar soluciones tecnológicas que promuevan un uso eficiente del agua. Este proyecto propone la implementación de un sistema de agricultura de precisión que monitoree variables clave para reducir el desperdicio de agua y mejorar la productividad agrícola.</p>
                 </div>
             </div>
         </section>
+        <section class="section">
+        <h2>Problema</h2>
+        <div class="content">
+            <div class="text">
+                <p>El desperdicio de agua en la agricultura es un problema crítico, especialmente en comunidades rurales donde el acceso a este recurso es limitado. Las prácticas de riego ineficientes contribuyen a la escasez de agua, afectando tanto la producción agrícola como la sostenibilidad del medio ambiente.</p>
+            </div>
+            <div class="image">
+                <img src="mission-image.jpg" alt="Our Mission Image">
+                <p class="image-signature">Signature or Name</p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <h2>Situacion actual</h2>
+        <div class="content">
+            <div class="image">
+                <img src="story-image.jpg" alt="Our Story Image">
+            </div>
+            <div class="text">
+                <p>El agua es esencial para la agricultura, pero su uso ineficiente puede llevar a la degradación del suelo y afectar la seguridad alimentaria. La implementación de tecnologías de monitoreo puede mejorar la gestión del agua. Existen diferentes tipos de sensores que permiten medir la humedad del suelo, la temperatura y la humedad relativa del aire, lo que ayuda a los agricultores a tomar decisiones informadas sobre el riego.</p>
+            </div>
+        </div>
+    </section>
     </div>
-
     <script>
         function goBack() {
             window.history.back();
