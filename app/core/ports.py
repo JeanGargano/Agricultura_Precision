@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
     
-class MicroInterface(ABC):
+class MongoInterface(ABC):
     
     @abstractmethod
     def save_sensor_data(self):
@@ -13,12 +13,8 @@ class MicroInterface(ABC):
         """Obtiene los datos del sensor"""
         pass
 
-    @abstractmethod
-    def calcular_cantidad_agua(self):
-        "Calcula la cantidad de agua en litros"
-        pass
+
     
-     
 class GeminiInterface(ABC):
     @abstractmethod
     def process_prompt(self):
