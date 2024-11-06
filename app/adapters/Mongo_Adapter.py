@@ -29,10 +29,7 @@ class MongoAdapter(MongoInterface):
         try:
             micro_data = data.dict(by_alias=True)
             result = self.collection.insert_one(micro_data)
-            if result:
-                return "Se han guardado los datos correctamente"
-            else:
-                return "No se pudieron guardar los datos, verifique los tipos"
+            return result
         except PyMongoError as e:
             raise Exception(f"Fallo la conexion a la BD: {str(e)}")
 
