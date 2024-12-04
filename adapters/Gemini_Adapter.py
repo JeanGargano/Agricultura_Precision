@@ -1,6 +1,6 @@
 import google.generativeai as genai
 import os
-from app.core.ports import GeminiInterface
+from core.ports import GeminiInterface
 
 class GeminiAdapter(GeminiInterface):
     def __init__(self):

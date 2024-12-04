@@ -1,6 +1,6 @@
-from app.adapters.Mongo_Adapter import MongoAdapter
-from app.core.models import SensorData, AguaRequest
-from app.adapters.Gemini_Adapter import GeminiAdapter
+from adapters.Mongo_Adapter import MongoAdapter
+from core.models import SensorData, AguaRequest
+from adapters.Gemini_Adapter import GeminiAdapter
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 

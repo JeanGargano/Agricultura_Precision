@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
-from app.api import dependencies
-from app.usecases import AgriculturaPrecisionService
-from app.core.models import PromptRequest, SensorData, AguaRequest
+from api import dependencies
+from usecases import AgriculturaPrecisionService
+from core.models import PromptRequest, SensorData, AguaRequest
 from pydantic import BaseModel
 
 #Enrutador

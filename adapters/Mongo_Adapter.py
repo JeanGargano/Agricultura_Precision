@@ -1,6 +1,6 @@
 # src/adapters/MysqlMicroAdapter.py
 from core.models import SensorData
-from app.core.ports import MongoInterface
+from core.ports import MongoInterface
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 import requests
