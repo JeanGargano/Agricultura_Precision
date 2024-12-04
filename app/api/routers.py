@@ -30,6 +30,17 @@ def get_sensor_data(
         return response
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+#Endpoint para obtener la data de la BD
+@router.get("/data")
+async def get_bd_data(
+    Agricultura_service: AgriculturaPrecisionService = Depends(dependencies.AgriculturaPrecisionSingleton.get_instance)
+):
+    try:
+        all_sensor_data = Agricultura_service.get_bd_data()
+        return all_sensor_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al obtener los datos: {str(e)}")
     
     
 

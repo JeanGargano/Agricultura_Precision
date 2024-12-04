@@ -13,6 +13,11 @@ class MongoInterface(ABC):
         """Obtiene los datos del sensor"""
         pass
 
+    @abstractmethod
+    def get_bd_data(self):
+        "Obtiene los datos de la base de datos"
+        pass
+
 
     
 class GeminiInterface(ABC):

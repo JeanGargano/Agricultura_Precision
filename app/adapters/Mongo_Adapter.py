@@ -29,20 +29,30 @@ class MongoAdapter(MongoInterface):
         try:
             micro_data = data.dict(by_alias=True)
             result = self.collection.insert_one(micro_data)
-            return result
+            if result:
+                return result
+            else:
+                return "Error al guardar los datos"
         except PyMongoError as e:
             raise Exception(f"Fallo la conexion a la BD: {str(e)}")
 
         
-    #Metodo para recolectar los datos del microcontrolador
     def collect_sensor_data(self):
         try:
-            response = requests.get("http://192.168.39.199/data")
-            response.raise_for_status()  # Lanza un error si el estado no es 200
+            response = requests.get("http://192.168.192.165/data")
+            response.raise_for_status()
             data = response.json()
             return data
         except requests.RequestException as e:
             raise Exception(f"Error al recolectar datos del sensor: {str(e)}")
+        
+    def get_bd_data(self):
+        cursor = self.collection.find({})
+        bd_data = [
+            {key: value for key, value in doc.items() if key != "_id"}  # Filtramos para excluir _id
+            for doc in cursor
+        ]
+        return bd_data
         
 
 

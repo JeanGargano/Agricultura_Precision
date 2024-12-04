@@ -9,7 +9,6 @@ class GeminiAdapter(GeminiInterface):
         if not api_key:
             raise ValueError("API_KEY no está configurada. Asegúrate de definirla en el archivo .env.")
         genai.configure(api_key=api_key) 
-        print(f"API_KEY cargada en GeminiAdapter: {api_key}")
         # Inicializa el modelo
         self.model = genai.GenerativeModel("gemini-1.5-flash")
 

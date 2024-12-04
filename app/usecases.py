@@ -51,10 +51,20 @@ class AgriculturaPrecisionService:
             temperatura = data.temperatura
             humedad_aire = data.humedad_aire
             humedad_suelo = data.humedad_suelo
+            if (humedad_suelo > 70):
+                return "No hay necesidad de efectuar riego puesto que el suelo ya esta bastante humedo"
             res = area * ((0.1*temperatura) - (0.05* (humedad_aire/100)) + (10*(1-(humedad_suelo/100))))
-            return res
+            return f"{res:.2f} L"
         except Exception as e:
             raise Exception(f"Error al calcular la cantidad de agua en litros")
+        
+    def get_bd_data(self):
+        try:
+            bd_data = self.mongo_adapter.get_bd_data()
+            return bd_data
+        except Exception as e:
+            # Handle any exceptions raised by the adapter
+            raise Exception(f"Error retrieving sensor data: {str(e)}")
            
 
         
