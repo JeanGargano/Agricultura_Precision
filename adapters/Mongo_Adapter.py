@@ -39,7 +39,7 @@ class MongoAdapter(MongoInterface):
         
     def collect_sensor_data(self):
         try:
-            response = requests.get("http://192.168.70.165/data")
+            response = requests.get("http://192.168.70.165/sensor-data")
             response.raise_for_status()
             data = response.json()
             return data
